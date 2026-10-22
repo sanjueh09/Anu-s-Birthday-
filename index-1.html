@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f8e8ec">
+<title>For Anu ♡ — a little birthday story</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap');
+:root{--rose:#a85e79;--rose-dark:#85465f;--blush:#f7e4e9;--paper:#fffaf7;--ink:#49343b;--muted:#806d72;--line:#edd7de;--gold:#b79a69}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(145deg,#f8e7eb 0%,#fdf4f2 48%,#f3dfe7 100%);color:var(--ink);font-family:'DM Sans',sans-serif;min-height:100vh}
+button,input{font:inherit}
+button{cursor:pointer}
+a{color:inherit}
+.wrap{min-height:100vh;padding:clamp(14px,4vw,34px);display:flex;justify-content:center;align-items:flex-start}
+.app{width:min(100%,760px);background:rgba(255,250,247,.96);border:1px solid rgba(255,255,255,.95);border-radius:30px;box-shadow:0 24px 80px #7e4a5c18;overflow:hidden;position:relative}
+.topline{height:5px;background:linear-gradient(90deg,#d9a5b7,#a85e79,#e6c6ce)}
+.header{padding:22px 28px 0;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font-size:12px;letter-spacing:.19em;text-transform:uppercase;color:var(--rose);font-weight:700}
+.music{border:1px solid var(--line);border-radius:99px;background:#fff7f7;color:var(--rose-dark);padding:10px 14px;font-size:12px;font-weight:700}
+.progress{display:flex;gap:5px;padding:20px 28px 0}
+.progress span{height:4px;border-radius:9px;background:#eedfe3;flex:1;transition:background .25s}
+.progress span.active{background:var(--rose)}
+.stage{display:none;padding:clamp(25px,6vw,48px);animation:enter .45s ease both}
+.stage.active{display:block}
+@keyframes enter{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--rose);font-weight:700;margin:0 0 18px}
+h1,h2{font-family:'Playfair Display',Georgia,serif;font-weight:500;line-height:1.12;letter-spacing:-.035em;margin:0 0 22px}
+h1{font-size:clamp(42px,9vw,74px)}h2{font-size:clamp(34px,7vw,52px)}
+h1 em,h2 em{color:var(--rose);font-weight:500}
+p{font-size:clamp(16px,2.8vw,19px);line-height:1.9;color:var(--muted);margin:0 0 20px}
+.small{font-size:13px;line-height:1.7}
+.photo{display:block;width:100%;max-height:690px;object-fit:cover;border-radius:23px;box-shadow:0 15px 35px #70455715;margin:25px 0}
+.photo.tall{aspect-ratio:4/5;object-position:center}
+.photo.wide{aspect-ratio:4/3}
+.photo.strip{object-fit:contain;background:#f6e7e9;max-height:760px}
+.caption{font-family:'Playfair Display',Georgia,serif;font-size:18px;font-style:italic;color:var(--rose-dark);margin-top:-7px;margin-bottom:24px}
+.quote{border-left:2px solid #d6a3b4;padding:8px 0 8px 18px;margin:26px 0;color:var(--ink);font-family:'Playfair Display',Georgia,serif;font-size:21px;line-height:1.65}
+.actions{display:flex;gap:10px;margin-top:32px;align-items:center}
+.btn{border:0;border-radius:99px;background:var(--rose);color:white;font-weight:700;padding:15px 23px;min-height:52px;box-shadow:0 7px 18px #a85e7922;transition:transform .15s,background .15s}
+.btn:hover{background:var(--rose-dark);transform:translateY(-1px)}
+.btn.secondary{background:#fff7f7;color:var(--rose-dark);border:1px solid var(--line);box-shadow:none}
+.btn.full{width:100%}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.back{background:transparent;border:0;color:var(--muted);padding:12px 4px;font-weight:600}
+.center{text-align:center}
+.center .photo{margin-left:auto;margin-right:auto}
+.heart{color:var(--rose);font-size:24px}
+.gift{border:1px solid var(--line);background:#fffdfb;border-radius:20px;padding:18px;margin:14px 0}
+.gift button{width:100%;text-align:left;border:0;background:transparent;color:var(--ink);font-weight:700;display:flex;justify-content:space-between;gap:12px;padding:2px}
+.gift .reveal{display:none;padding-top:14px}
+.gift.open .reveal{display:block}
+.gift .reveal p{font-size:15px;margin:0}
+.gift .symbol{color:var(--rose);font-size:21px}
+.quiz-card{background:#fffdfb;border:1px solid var(--line);padding:19px;border-radius:19px;margin:14px 0}
+.quiz-card h3{font-family:'Playfair Display',Georgia,serif;font-size:21px;font-weight:500;margin:0 0 14px}
+.option{display:block;width:100%;text-align:left;background:#fff7f7;border:1px solid var(--line);color:var(--ink);border-radius:13px;padding:12px 14px;margin:8px 0}
+.option.selected{border-color:var(--rose);background:#f8e6eb}
+.result{font-weight:700;color:var(--rose-dark);line-height:1.7}
+.entry{display:none;padding:clamp(25px,6vw,48px)}
+.entry.active{display:block}
+.entry input{width:100%;padding:15px 16px;border:1px solid var(--line);border-radius:13px;background:#fff;color:var(--ink);margin:10px 0 12px}
+.footer{padding:0 28px 28px;display:flex;align-items:center;justify-content:space-between;gap:12px;color:#aa8f98;font-size:11px}
+.footer span{letter-spacing:.06em}
+.confetti{position:fixed;pointer-events:none;z-index:10;font-size:18px;animation:float 2.2s ease-out forwards}
+@keyframes float{0%{opacity:0;transform:translateY(10px) rotate(0)}15%{opacity:1}100%{opacity:0;transform:translateY(-130px) rotate(35deg)}}
+@media(max-width:520px){.wrap{padding:10px}.app{border-radius:24px}.header{padding:18px 18px 0}.progress{padding:17px 18px 0}.stage,.entry{padding:25px 22px 30px}.footer{padding:0 22px 22px}.actions{flex-direction:column-reverse;align-items:stretch}.actions .btn,.actions .back{width:100%}.photo{border-radius:17px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap"><main class="app">
+<div class="topline"></div>
+<div class="header"><div class="brand">A tiny birthday story · just for you</div><button class="music" id="musicBtn" type="button">♫ Play our song</button></div>
+<div class="progress" id="progress" aria-label="Story progress"></div>
+
+<section class="entry active" id="entry">
+<p class="eyebrow">A little surprise, made just for you</p>
+<h1>This surprise<br>is for <em>Anu.</em></h1>
+<p>Take your time with this one. There are a few memories, a few things I wanted to say, and a little corner of the internet that belongs to you today.</p>
+<div class="quote">For Anushka — my favourite person to tease, be teased by, and make memories with. ♡</div>
+<button class="btn full" id="enterBtn">Open your birthday story ♡</button>
+<p class="small" style="margin-top:16px">Best opened slowly, with a little time to yourself.</p>
+</section>
+
+<section class="stage" data-stage="0">
+<p class="eyebrow">01 · A little something for you</p>
+<h1>Happy birthday, <em>Anu.</em></h1>
+<p>You're home now? Okay. I saved one more thing for you.</p>
+<img class="photo tall" src="01-favourite.jpg" alt="Our favourite photo together">
+<div class="quote">The gifts were one part. This little corner of the internet is just for you.</div>
+<p>I wanted you to have something you could open later, take your time with, and come back to whenever you feel like it. No big speech needed. Just us, and a few things I wanted you to know.</p>
+<div class="actions"><button class="btn full next">Open your surprise ♡</button></div>
+</section>
+
+<section class="stage" data-stage="1">
+<p class="eyebrow">02 · Where it started</p>
+<h2>From projects<br>to <em>us.</em></h2>
+<img class="photo tall" src="02-together.jpg" alt="Us together in the greenery">
+<p>We met through the web updations department in college, working on the same projects. It wasn't some movie-style beginning with dramatic music and perfect timing. We were just doing our work, sharing little moments, and somehow you became someone I looked forward to seeing.</p>
+<p>And then, somewhere along the way, you stopped being just the girl I worked with and became <em>my person.</em> Funny how life does that without asking permission first.</p>
+<div class="quote">If someone had told me that those college projects would lead me here, I probably would've laughed. And then thanked them.</div>
+<p>I don't know the exact moment it changed. I just know I'm glad it did.</p>
+<div class="actions"><button class="back prev">← Back</button><button class="btn next full">Keep going</button></div>
+</section>
+
+<section class="stage" data-stage="2">
+<p class="eyebrow">03 · One of my favourites</p>
+<h2>That day in <em>Hyderabad.</em></h2>
+<img class="photo tall" src="10-closeup.jpg" alt="A close-up memory from our outing">
+<p>Lumbini Park, then Birla Mandir. A day I keep coming back to in my head. Not because everything had to be perfect, but because I got to spend that time with you.</p>
+<p>I remember the feeling of being there together. The little conversations, the laughter, the ordinary bits that somehow become the bits you hold onto.</p>
+<div class="quote">Some memories don't need a big caption. You're there, I'm there, and that's enough.</div>
+<p>I hope we get to make many more days like that — the kind we don't realise are becoming favourite memories until later.</p>
+<div class="actions"><button class="back prev">← Back</button><button class="btn next full">One more memory</button></div>
+</section>
+
+<section class="stage" data-stage="3">
+<p class="eyebrow">04 · Little pieces of us</p>
+<h2>Not every memory needs a <em>caption.</em></h2>
+<img class="photo wide" src="03-detail.jpg" alt="A close-up detail from our day together">
+<p class="caption">Little details I know I'll remember.</p>
+<p>Sometimes it's not even the whole day you remember. It's a tiny detail, the way you looked, something you said, or a photo that makes you smile before you even realise why.</p>
+<div class="quote">I think that's one of my favourite things about having you in my life: normal moments don't feel quite so normal anymore.</div>
+<p>And yes, I'm keeping the photos. You don't get to complain about being cute and then expect me not to save evidence. ♡</p>
+<div class="actions"><button class="back prev">← Back</button><button class="btn next full">Proceed to important research</button></div>
+</section>
+
+<section class="stage" data-stage="4">
+<p class="eyebrow">05 · Extremely serious research</p>
+<h2>100 kgs.<br><em>100 cms.</em></h2>
+<img class="photo wide" src="09-funny.jpg" alt="A funny moment together">
+<p>A relationship built on love, trust, and questionable measurements. One of us brings 100 kgs of nonsense; the other brings 100 cms of attitude.</p>
+<div class="quote">Official scientific conclusion: the height difference is real, the teasing is permanent, and neither of us is ever letting this joke go.</div>
+<p>I love when you scold me, tease me, and still take care of me like I'm your baby. Even when you're pretending to be annoyed, you have this way of making me feel looked after. I hope you know I notice those little things.</p>
+<p>Unsolved mystery #1: what exactly is “bli blu”? I've been thinking about this and I still have questions, Anu. Please provide a formal explanation when convenient.</p>
+<div class="actions"><button class="back prev">← Back</button><button class="btn next full">Test your knowledge ♡</button></div>
+</section>
+
+<section class="stage" data-stage="5">
+<p class="eyebrow">06 · A very serious test</p>
+<h2>How well do you know <em>us?</em></h2>
+<img class="photo wide" src="04-sand-memory.jpg" alt="A memory written in the sand">
+<p>Five questions. No pressure. Your examiner is biased and will probably give you a hint.</p>
+<div id="quiz"></div>
+<p class="result" id="quizResult" aria-live="polite"></p>
+<div class="actions"><button class="back prev">← Back</button><button class="btn next full">See your surprises</button></div>
+</section>
+
+<section class="stage" data-stage="6">
+<p class="eyebrow">07 · Little reminders of my love</p>
+<h2>A few things, <em>for you.</em></h2>
+<img class="photo tall" src="06-flowers.jpg" alt="Anu among the flowers">
+<p>Each gift is a small thing compared with what you mean to me, but I wanted every one to have its own little meaning. Tap each one when you're ready.</p>
+<div class="gift"><button type="button" aria-expanded="false"><span>♡ The necklace</span><span class="symbol">＋</span></button><div class="reveal"><p>Something close to you, something you can wear on ordinary days and special ones. I hope it reminds you that someone is thinking of you, even when I'm not right beside you.</p></div></div>
+<div class="gift"><button type="button" aria-expanded="false"><span>♡ The ring</span><span class="symbol">＋</span></button><div class="reveal"><p>A little circle, and a little reminder of us. Not a grand promise hidden in jewellery — just a thoughtful gift for the girl I'm really happy to call mine.</p></div></div>
+<div class="gift"><button type="button" aria-expanded="false"><span>♡ The bracelet</span><span class="symbol">＋</span></button><div class="reveal"><p>For your wrist, and for all those little moments still waiting for us. I hope it becomes one of those things you put on without thinking and then remember where it came from.</p></div></div>
+<div class="gift"><button type="button" aria-expanded="false"><span>♡ The earrings</span><span class="symbol">＋</span></button><div class="reveal"><p>Because I can already imagine you wearing them. And because sometimes I just want to give you something pretty, with no reason other than you being you.</p></div></div>
+<div class="gift"><button type="button" aria-expanded="false"><span>♡ The handwritten letters</span><span class="symbol">＋</span></button><div class="reveal"><p>These are the words I wanted you to have in my handwriting, not just on a screen. Keep them, reread them whenever you want, and please know that I meant them.</p></div></div>
+<div class="actions"><button class="back prev">← Back</button><button class="btn next full">One last thing</button></div>
+</section>
+
+<section class="stage" data-stage="7">
+<p class="eyebrow">08 · What I hope you know</p>
+<h2>It's the little things about <em>you.</em></h2>
+<img class="photo strip" src="08-photo-booth.jpg" alt="Our photo booth memories">
+<p>Anu, I love the way you carry yourself, the way you tease me, the way you scold me when I deserve it, and the way you care for me like I'm your baby. You can make me laugh and annoy me in the same five minutes, and somehow I still want to tell you everything that happens in my day.</p>
+<p>I don't always say it properly, but I notice the small things. The concern behind your scolding. The affection hidden in your teasing. The way you make room for me in your life. Those things matter to me more than I can fit into one page.</p>
+<p>I'm really glad I have you in my life. I don't expect us to be perfect every day. I just want us to keep learning each other, being honest, making up after silly arguments, laughing at jokes that are probably only funny to us, and choosing to show up for each other.</p>
+<div class="quote">Thank you for being you, Anu. For the teasing, the scolding, the care, and all the little moments that have become ours.</div>
+<p>Happy birthday, my girl. I hope you remember how special you are to me, even on the most ordinary days.</p>
+<div class="actions"><button class="back prev">← Back</button><button class="btn next full">One more memory ♡</button></div>
+</section>
+
+<section class="stage" data-stage="8">
+<p class="eyebrow">09 · Just because it's you</p>
+<h2>A little more of <em>Anu.</em></h2>
+<img class="photo tall" src="07-cap.jpg" alt="Anu being completely herself">
+<p>This is your reminder that you don't have to be dressed up, doing something special, or trying to impress anyone to be lovely to me. I like the real you. The silly you, the stubborn you, the sleepy you, the you who roasts me and then checks if I've eaten.</p>
+<p>I hope this year brings you more things that make you feel proud, peaceful, excited, and genuinely happy. I'll be cheering for you — and probably teasing you a little while I do it.</p>
+<div class="quote">My favourite version of you is simply the one that's being herself.</div>
+<div class="actions"><button class="back prev">← Back</button><button class="btn next full">Play our song ♫</button></div>
+</section>
+
+<section class="stage center" data-stage="9">
+<p class="eyebrow">10 · Before you go</p>
+<h2>For you, <em>Anu.</em></h2>
+<img class="photo tall" src="05-beach.jpg" alt="A quiet beach memory">
+<p>Put our song on if you want to. Take another look through the photos. Read the letters again. And if you ever have one of those days when you need a reminder that you're loved, come back here.</p>
+<p>I'm still figuring out plenty of things — including “bli blu” — but I'm sure about this: I'm happy it's you I'm getting to know, laugh with, and make memories with.</p>
+<div class="quote">Happy birthday, Anushka. I hope this next year is kind to you. I hope you get so many reasons to smile. And I hope I get to be there for a lot of them. ♡</div>
+<p class="heart">♡</p>
+<p class="small">Made with love, a little bit of overthinking, and absolutely no understanding of bli blu.</p>
+<div class="actions"><button class="back prev">← Back</button><button class="btn full" id="replay">Start again ♡</button></div>
+</section>
+
+<div class="footer"><span>FOR ANU · WITH LOVE</span><span id="pageCount">A little story, just for you ♡</span></div>
+</main></div>
+<script>
+const stages=[...document.querySelectorAll('.stage')];
+const entry=document.getElementById('entry');
+const progress=document.getElementById('progress');
+let current=0;
+stages.forEach((_,i)=>{const s=document.createElement('span');if(i===0)s.className='active';progress.appendChild(s)});
+const bars=[...progress.children];
+function show(i){current=Math.max(0,Math.min(stages.length-1,i));entry.classList.remove('active');stages.forEach((s,j)=>s.classList.toggle('active',j===current));bars.forEach((b,j)=>b.classList.toggle('active',j<=current));document.getElementById('pageCount').textContent=`Page ${current+1} of ${stages.length} · just for you ♡`;window.scrollTo({top:0,behavior:'smooth'});}
+document.querySelectorAll('.next').forEach(b=>b.addEventListener('click',()=>show(current+1)));
+document.querySelectorAll('.prev').forEach(b=>b.addEventListener('click',()=>show(current-1)));
+document.getElementById('replay').addEventListener('click',()=>{current=0;stages.forEach(s=>s.classList.remove('active'));bars.forEach((b,j)=>b.classList.toggle('active',j===0));entry.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});});
+document.getElementById('enterBtn').addEventListener('click',()=>{entry.classList.remove('active');show(0);sprinkle();});
+document.getElementById('musicBtn').addEventListener('click',()=>window.open('https://music.youtube.com/watch?v=_ofFkIYi00Q&si=nd4y2T45cvRCtQAm&drli=1','_blank','noopener'));
+document.querySelectorAll('.gift button').forEach(b=>b.addEventListener('click',()=>{const card=b.closest('.gift');card.classList.toggle('open');b.setAttribute('aria-expanded',card.classList.contains('open'));b.querySelector('.symbol').textContent=card.classList.contains('open')?'−':'＋';}));
+const questions=[
+{q:'Where did we go on that special outing together?',a:['Lumbini Park and Birla Mandir','A random supermarket','The moon'],c:0,why:'Exactly. A Hyderabad day I keep coming back to.'},
+{q:'Where did our story start taking shape?',a:['A dating app','The college web updations department','A cooking class'],c:1,why:'From college projects to us. Funny how that happened.'},
+{q:'What is our very serious measurement joke?',a:['10 and 20','100 kgs and 100 cms','One tall, one taller'],c:1,why:'Scientifically questionable. Emotionally very important.'},
+{q:'What do I secretly love even when you do it dramatically?',a:['When you scold, tease and care for me','When you steal my phone forever','When you make me do all your assignments'],c:0,why:'The care behind it is one of my favourite things.'},
+{q:'What is still an unsolved mystery?',a:['Why the sky is blue','What exactly “bli blu” means','How the internet works'],c:1,why:'I am still awaiting the official explanation, madam.'}
+];
+const quizRoot=document.getElementById('quiz');let answers={};let checked=false;
+function renderQuiz(){quizRoot.innerHTML='';questions.forEach((q,i)=>{const card=document.createElement('div');card.className='quiz-card';const title=document.createElement('h3');title.textContent=(i+1)+'. '+q.q;card.appendChild(title);q.a.forEach((a,j)=>{const b=document.createElement('button');b.className='option'+(answers[i]===j?' selected':'');b.type='button';b.textContent=a;b.addEventListener('click',()=>{answers[i]=j;checked=false;document.getElementById('quizResult').textContent='';renderQuiz()});card.appendChild(b)});if(checked){const f=document.createElement('p');f.className='small';f.style.color='var(--rose-dark)';f.textContent=(answers[i]===q.c?'Correct ♡ ':'Answer: '+q.a[q.c]+'. ')+q.why;card.appendChild(f)}quizRoot.appendChild(card)});const check=document.createElement('button');check.className='btn full';check.type='button';check.textContent=checked?'Try again':'Check my answers';check.addEventListener('click',()=>{if(checked){checked=false;answers={};document.getElementById('quizResult').textContent='';renderQuiz();return;}if(Object.keys(answers).length<questions.length){document.getElementById('quizResult').textContent='Answer all five first, madam ♡';return;}checked=true;renderQuiz();const score=questions.filter((q,i)=>answers[i]===q.c).length;document.getElementById('quizResult').textContent=`Your score: ${score}/5. Either way, you are still my favourite person to annoy. ♡`;});quizRoot.appendChild(check)}
+renderQuiz();
+function sprinkle(){for(let i=0;i<12;i++){const e=document.createElement('span');e.className='confetti';e.textContent=['♡','♥','✿'][i%3];e.style.left=(10+Math.random()*80)+'vw';e.style.top=(55+Math.random()*25)+'vh';document.body.appendChild(e);setTimeout(()=>e.remove(),2300)}}
+</script>
+</body>
+</html>
